@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     fun onClickImageButton(view: View) {
         val image: ImageView = view as ImageView
         val text: TextView = findViewById<TextView>(R.id.textView)
-        val strText: String = if(!isX) "Vez do jogador 1" else "Vez do joagador 2"
+        val strText: String = if(!isX) "Vez do jogador 1" else "Vez do jogador 2"
         text.setText(strText)
         image.setImageResource(if(isX) R.drawable.ic_x else R.drawable.ic_zero)
         image.setOnClickListener {  }
@@ -193,6 +193,10 @@ class MainActivity : AppCompatActivity() {
             tabPositions[2] == Chose.CHOSE_O
         ) {
             Toast.makeText(this, "O win", Toast.LENGTH_SHORT).show()
+            return true
+        }
+        else if (!tabPositions.contains(Chose.NO_CHOSE)) {
+            Toast.makeText(this, "a tie", Toast.LENGTH_SHORT).show()
             return true
         }
         return false
